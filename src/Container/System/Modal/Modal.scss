@@ -1,0 +1,31 @@
+.preview-img-container{
+    
+    .btn-choise-image{
+        width: 141px;
+        height: 33px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4px 43px;
+        background-color: #ddd;
+        border-radius: 3px;
+    
+        &:hover{
+            background-color: black;
+            color: white;
+            cursor: pointer;
+        }
+    }
+
+    .preview-image{
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        border: 1px solid #ddd;
+        margin: auto auto;
+        background: center center no-repeat;
+        background-size: cover;
+        object-fit: cover;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,549 @@
+// #customers {
+//     font-family: Arial, Helvetica, sans-serif;
+//     border-collapse: collapse;
+//     width: 100%;
+// }
+
+// #customers td, #customers th {
+//     border: 1px solid #ddd;
+//     padding: 8px;
+// }
+
+// #customers tr:nth-child(even){
+//     background-color: #f2f2f2;
+// }
+
+// #customers tr:hover {
+//     background-color: #ddd;
+// }
+
+// #customers th {
+//     padding-top: 12px;
+//     padding-bottom: 12px;
+//     text-align: left;
+//     background-color: #04AA6D;
+//     color: white;
+// }
+
+// .manage-container{
+//   .active {
+//     background-color: rgba(255,0,0,0.4)!important; 
+//     border-color: red !important;
+//     opacity: 0.3 !important;
+//     color: red !important;
+//     font-weight: bold !important;
+//   }
+  
+//   .search-container {
+//     background-color: white;
+//     height: 41px;
+//     margin: 10px 0;
+
+//     .form-input-filter {
+//       align-items: center;
+//       p {
+//         text-align: center !important;
+//       }
+//     }
+//     .search-fix-design{
+//       display: flex;
+//       align-items: center;
+//       &.search-fix {
+//         position: fixed;
+//         box-shadow: 1px 1px solid red;
+//         border-bottom-left-radius: 5px;
+//         border-bottom-right-radius: 5px;
+//         z-index: 10;
+//         top: 0;
+//         left: 24px;
+//       }
+//     }
+//   }
+
+//   .extra-infor-container {
+//     padding: 20px;
+//     &:hover {
+//       background-color: white !important;
+//     }
+
+//     .extra-infor-body{
+//       width: 635px;
+//       display: flex;
+//       .extra-infor-image {
+//         width: 40%;
+//         img {
+//           height: 227px;
+//           width: 227px;
+//           background: center center no-repeat;
+//           border-radius: 20px !important;
+//         }
+//       }
+//       .extra-infor{
+//         padding: 20px;
+//         width: 60%;
+//         flex-direction: flex-start;
+//       }
+//     }
+//   }
+
+//   .btn-edit{
+//       width: 50px;
+//       border: none;
+//       outline: none;
+//       background-color: transparent;
+//       color: orange;
+  
+//       &:hover{
+//         background-color: transparent !important;
+//         color: blue;
+//       }
+//   }
+  
+//   .btn-delete{
+//     width: 50px;
+//     border: none;
+//     outline: none;
+//     background-color: transparent;
+//     color: red;
+  
+//     &:hover{
+//       background-color: transparent !important;
+//       color: blue;
+//     }
+//   }
+  
+  
+//   .btn-container{
+//       position: relative;
+//       height: 40px;
+     
+  
+//     .btn-create {
+//       position: absolute;
+//       width: 120px;
+//       height: 30px;
+//       background-color: aqua;
+//       color: black;
+//       box-shadow: 1px 2px 3px #4e4747;
+//       cursor: pointer;
+//       border: none;
+//       border-radius:3px;
+//       font-weight: 500;
+    
+//       &:active{
+//         left: 3px;
+//         top: 4px;
+//         box-shadow: none;
+//       }
+//     }
+
+//     .nav-btn{
+//       position: absolute;
+//       left: 188px;
+//       height: 40px;
+//       width: 100%;
+     
+
+//       button{
+//         border-radius: 3px;
+//         margin: 0 5px;
+//         width: 160px;
+//         padding: 5px 8px;
+//         border: none;
+
+//         &:hover{
+//           background-color: rgb(93, 239, 93);
+//         }
+
+//         &.select{
+//           background-color: rgb(93, 239, 93);
+//           border: none;
+//         }
+      
+//       }
+//     }
+//   }
+// }
+
+
+// .modal-user-container{
+
+  
+//   .modal-header{
+//     button{
+//       background-color: transparent;
+//       color: white;
+//       font-size: 25px;
+//       font-weight: 600;
+//       border: none;
+//     }
+    
+//   }
+
+//   .modal-user-body{
+//     display: flex;
+//     gap: 15px;
+//     flex-wrap: wrap;
+
+//     .input-container{
+//       display: flex;
+//       flex-direction: column;
+//       width: 49%;
+      
+//       .form-select{
+//         height: 100%;
+//       }
+
+//       input{
+//         position: relative;
+//         border-radius: 3px;
+//         padding: 0 10px;
+//         border: 1px solid grey;
+//         height: 30px;
+  
+//         &:focus{
+//           outline: 4px solid #86b7fe;
+          
+//         }
+
+        
+//       }
+//       .icon{
+//         position: absolute;
+//         right: 23px;
+//         top: 40px;
+//       }
+//     }
+
+//   }
+
+//   .btn-close{
+//     background-color: #4e4747;
+//     width: 75px;
+//     color: white;
+
+//     &:hover{
+//       background-color: red;
+//     }
+//   }
+
+//   .btn-create{
+//     width: 100px;
+//   }
+// }
+
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+// sửa chỗ này
+#customers td,
+#customers th {
+  border: 1px solid #bebbbb;
+  padding: 8px;
+  font-size: 0.8rem;
+}
+// sủa chỗ này
+#customers tr {
+  button:nth-child(1) {
+    margin-top: 1%;
+    margin-left: 2.5%;
+    border-style: none;
+    background-color: transparent;
+    svg {
+      font-size: 1.2rem;
+    }
+  }
+  button {
+    margin-top: 1%;
+    margin-left: 2.5%;
+    border-style: none;
+    border-style: none;
+    svg {
+      font-size: 1.2rem;
+      background-color: transparent;
+    }
+  }
+}
+
+#customers tr:nth-child(even) {
+  background-color: #eee;
+}
+
+#customers tr:hover {
+  background-color: #ddd;
+}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04aa6d;
+  color: white;
+}
+// sủa cả đoạn này
+.header-system-container {
+  display: flex;
+  align-items: center;
+  padding: 0px 20px 0px;
+  svg {
+    font-size: 2.2rem !important;
+    display: flex;
+    align-items: center;
+  }
+  .nav-system {
+    display: flex;
+    align-items: center;
+
+    .nav-system-link {
+      font-size: 0.8rem;
+    }
+  }
+}
+.manage-container {
+  .text-center {
+    margin-top: 1%;
+    font-size: 1rem;
+  }
+  .active {
+    background-color: #fce0e7 !important;
+    border-color: #ff0404 !important;
+    color: #ff0404 !important;
+    font-weight: bold !important;
+    
+  }
+
+  .search-container {
+    background-color: white;
+    height: 41px;
+    margin: 20px 0;
+
+    .form-input-filter {
+      align-items: center;
+      position: relative;
+      button {
+        position: absolute;
+        right: -15%;
+        padding: 7px 30px;
+        border-radius: 5px;
+        border-style: none;
+        font-size: 1rem;
+        background-color: #0071ba;
+        color: #ffffff;
+        &:active {
+          box-shadow: 0px 0px 3px #080808;
+        }
+      }
+      p {
+        text-align: center !important;
+      }
+    }
+    .search-fix-design {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      // sửa chỗ này
+      label {
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      // sủa chỗ này
+      div {
+        div {
+          div {
+            font-size: 0.8rem;
+            font-weight: 400;
+          }
+        }
+      }
+      // sửa chỗ này
+      &.search-fix {
+        position: fixed;
+        box-shadow: 1px 1px solid red;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        z-index: 10;
+        top: 0;
+        left: 16px;
+        width: 97.9%;
+        padding: 15px 10px;
+        background-color: #ffffff;
+        box-shadow: 0px 0px 3px #4e4747;
+        transition: 0.1s;
+      }
+    }
+  }
+
+  .extra-infor-container {
+    padding: 20px;
+    &:hover {
+      background-color: white !important;
+    }
+
+    .extra-infor-body {
+      width: 100%;
+      display: flex;
+      .extra-infor-image {
+        width: 40%;
+        img {
+          height: 227px;
+          width: 227px;
+          background: center center no-repeat;
+          border-radius: 20px !important;
+        }
+      }
+
+      .extra-infor {
+        padding: 20px;
+        width: 80%;
+        flex-direction: flex-start;
+        // sửa chỗ này
+        div {
+          font-size: 0.8rem;
+          font-weight: 600;
+        }
+        div:nth-child(7) {
+          font-size: 0.8rem;
+          font-weight: 600;
+          width: 1000px !important;
+        }
+      }
+    }
+  }
+
+  .btn-edit {
+    width: 50px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: orange;
+
+    &:hover {
+      background-color: transparent !important;
+      color: blue;
+    }
+  }
+
+  .btn-delete {
+    width: 50px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: red;
+
+    &:hover {
+      background-color: transparent !important;
+      color: blue;
+    }
+  }
+
+  .btn-container {
+    position: relative;
+    height: 40px;
+
+    .btn-create {
+      position: absolute;
+      width: 120px;
+      height: 30px;
+      background-color: aqua;
+      color: black;
+      box-shadow: 1px 2px 3px #4e4747;
+      cursor: pointer;
+      border: none;
+      border-radius: 3px;
+      font-weight: 500;
+
+      &:active {
+        left: 3px;
+        top: 4px;
+        box-shadow: none;
+      }
+    }
+
+    .nav-btn {
+      position: absolute;
+      left: 188px;
+      height: 40px;
+      width: 100%;
+
+      button {
+        border-radius: 3px;
+        margin: 0 5px;
+        width: 160px;
+        padding: 5px 8px;
+        border: none;
+
+        &:hover {
+          background-color: rgb(93, 239, 93);
+        }
+
+        &.select {
+          background-color: rgb(93, 239, 93);
+          border: none;
+        }
+      }
+    }
+  }
+}
+
+.modal-user-container {
+  .modal-header {
+    button {
+      background-color: transparent;
+      color: white;
+      font-size: 25px;
+      font-weight: 600;
+      border: none;
+    }
+  }
+
+  .modal-user-body {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+
+    .input-container {
+      display: flex;
+      flex-direction: column;
+      width: 49%;
+
+      .form-select {
+        height: 100%;
+      }
+
+      input {
+        position: relative;
+        border-radius: 3px;
+        padding: 0 10px;
+        border: 1px solid grey;
+        height: 30px;
+
+        &:focus {
+          outline: 4px solid #86b7fe;
+        }
+      }
+      .icon {
+        position: absolute;
+        right: 23px;
+        top: 40px;
+      }
+    }
+  }
+
+  .btn-close {
+    background-color: #4e4747;
+    width: 75px;
+    color: white;
+
+    &:hover {
+      background-color: red;
+    }
+  }
+
+  .btn-create {
+    width: 100px;
+  }
+}

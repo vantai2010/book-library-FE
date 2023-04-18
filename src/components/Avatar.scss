@@ -1,0 +1,110 @@
+// .avatar-user-container {
+//     display: flex;
+//     flex-direction: column;
+//     position: relative;
+    
+
+//     &:hover {
+//         .obtion-user-container {
+//             display: block;
+//         }
+//     }
+    
+//     .avatar-user-body {
+
+//         img {
+//             width: 50px;
+//             height: 50px;
+//             background-size: cover;
+//             border-radius: 50%;
+//         }
+//     }
+
+//     .obtion-user-container {
+//         display:none;
+//         position: absolute;
+//         z-index: 10;
+//         background-color: white;
+//         padding: 10px;
+//         top: 43px;
+//         left: -20px;
+//         width: max-content;
+//         border-radius: 9px;
+
+//         .obtion-user-body {
+
+//             &::before {
+//                 content: "";
+//                 position: absolute;
+//                 width: 142px;
+//                 height: 17px;
+//                 top: -10px;
+//                 left: 14px;
+//             }
+
+//             li {
+//                 color: aqua;
+//                 cursor: pointer;
+//             }
+
+//         }
+
+//     }
+    
+// }
+
+
+.avatar-user-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  
+    &:hover {
+      .obtion-user-container {
+        display: block;
+      }
+    }
+  
+    .avatar-user-body {
+      img {
+        position: relative;
+        z-index: 13;
+        width: 50px;
+        height: 50px;
+        background-size: cover;
+        border-radius: 50%;
+      }
+    }
+  
+    .obtion-user-container {
+      display: none;
+      position: absolute;
+      z-index: 10;
+      background-color: white;
+      padding: 10px;
+      top: 43px;
+      left: -20px;
+      width: max-content;
+      border-radius: 9px;
+      // sửa chỗ này
+      .obtion-user-body {
+        margin: 0;
+        padding: 0;
+        &::before {
+          content: "";
+          position: absolute;
+          width: 142px;
+          height: 17px;
+          top: -10px;
+          left: 14px;
+        }
+        li {
+          display: block;
+          margin: 0 auto;
+          color: aqua;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  

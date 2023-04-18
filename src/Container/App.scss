@@ -1,0 +1,23 @@
+// body {
+//     font-size: 62.5%!important;
+//     font-family: "Poppins", sans-serif;
+// }
+
+body {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(5, 222, 250, 1) #fff;
+}
+  
+body::-webkit-scrollbar {
+    width: 10px;
+    &:hover {
+        width: 14px;
+    }
+}
+  
+body::-webkit-scrollbar-thumb {
+    background-color: rgba(5, 222, 250, 1);
+}
+  

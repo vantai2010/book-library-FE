@@ -1,0 +1,293 @@
+.extra-infor-user-container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: #eee;
+    .extra-infor-body {
+        display: flex; 
+        height: auto;
+        border-radius: 10px;
+        width: 300px;
+        flex-wrap: wrap;
+        padding: 0;
+        // box-shadow: 26px 21px 0px aqua;
+
+        .extra-infor-body-left {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: #5acf93;
+            gap: 10px;
+            align-items: center;
+            padding: 20px 0; 
+            span:nth-child(1) {
+                color: white;
+                font-size: 21px;
+                text-transform: uppercase;
+            }
+            .form-infor-contact {
+                justify-content: flex-start !important;
+                gap: 15px;
+                width: 100%;
+                align-items: center;
+                padding-left: 31px;
+                margin-top: 12px;
+                display: flex !important;
+
+                .container-icon-infor {
+                    height: 50px;
+                    border: 1px solid white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 50%;
+                    width: 50px;
+                    svg {
+                        font-size: 33px !important;
+                        color: white !important;
+                    }
+                }
+                span {
+                    color: white;
+                    font-size: 17px;
+
+                }
+            }
+
+            .container-image {
+                width: 100%;
+                padding: 0px 20px;
+                
+                img {
+                    border-radius: 50px;
+                    box-shadow: 0 0 10px 0 rgb(255, 255, 255);
+                    width: 100%;
+                    height: 277px;
+                    background-size: cover;
+                }
+            }
+        }
+
+        .extra-infor-body-center {
+            width: 30%;
+            padding: 30px;
+            display: flex;
+            background-color: white;
+            flex-direction: column !important;
+            justify-content: space-between;
+            label {
+                font-size: 14px;
+            }
+            
+            .form-choose-image {
+                display: flex;
+                gap: 3px;
+                .btn-choose-image {
+                    width: 50%;
+                    background-color: #5acf93;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 39px;
+                    border-radius: 30px;
+                    color: white;
+                    span {
+                        font-size: 12px;
+                    }
+                    &:hover {
+                        cursor: pointer;
+                        background-color: white;
+                        border: 1px solid #5acf93;
+                        color: #5acf93;
+                        
+                    }
+                }
+                .btn-reset-image {
+                    width: 50%;
+                    background-color: #5acf93;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 39px;
+                    border-radius: 30px;
+                    color: white;
+                    span {
+                        font-size: 12px;
+                    }
+                    &:hover {
+                        cursor: pointer;
+                        background-color: white;
+                        border: 1px solid #5acf93;
+                        color: #5acf93;
+                        
+                    }
+                }
+            }
+
+            .btn-edit-infor {
+                border-radius: 30px;
+                background-color: #5acf93;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 39px;
+
+                svg {
+                    color: white;
+                    font-size: 30px;
+                }
+
+                &:hover {
+                    background-color: white;
+                    border: 1px solid #5acf93;
+                    cursor: pointer;
+                    svg{
+                        color: #5acf93;
+                    }
+                }
+            }
+            .btn-check-edit-infor {
+                display: flex;
+                gap: 3px;
+                .btn-check-success{
+                    width: 50%;
+                    background-color: #5acf93;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 39px;
+                    border-radius: 30px;
+                    color: white;
+                    &:hover {
+                        cursor: pointer;
+                        background-color: white;
+                        border: 1px solid #5acf93;
+                        color: #5acf93;
+                        
+                    }
+                }
+
+                .btn-check-cancel{
+                    width: 50%;
+                    background-color: rgba(255, 0, 0, 0.8);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 39px;
+                    border-radius: 30px;
+                    color: white;
+                    &:hover {
+                        cursor: pointer;
+                        background-color: white;
+                        border: 1px solid rgba(255, 0, 0, 0.8);
+                        color: rgba(255, 0, 0, 0.8);
+                        
+                    }
+                }
+            }
+        }
+        .extra-infor-body-right {
+            padding: 30px;
+            width: 30%;
+            background-color: #5acf93;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+            align-items: center;
+
+            span {
+                color: white;
+                font-size: 21px;
+                text-transform: uppercase;
+            }
+            
+
+            button {
+                width: 283px;
+                border-radius: 30px;
+                background-color: white;
+                color: aqua;
+                box-shadow: 0px 0px 10px #979292;
+                font-size: 19px;
+                outline: none;
+                border: 1px solid white;
+                height: 48px !important;
+
+                &:hover {
+                    background-color: aqua;
+                color: white;
+                }
+            }
+
+            .enter-old-password {
+                position: relative;
+                input {
+                    border-radius: 30px;
+                    height: 50px;
+                    width: 283px;
+                }
+            }
+            .icon-for-enter-old-password {
+                // background-color: black;
+                top: 9px;
+                right: 8px;
+                font-size: 27px;
+                width: 49px;
+                height: 33px;
+                border-radius: 30px;
+                position: absolute;
+                cursor: pointer;
+                svg {
+                    color: white !important;
+                }
+            }
+
+            .enter-new-password {
+                position: relative;
+                input {
+                    border-radius: 30px;
+                    height: 50px;
+                    width: 283px;
+                }
+            }
+            .icon-for-enter-new-password {
+                // background-color: black;
+                top: 9px;
+                right: 8px;
+                font-size: 27px;
+                width: 49px;
+                height: 33px;
+                border-radius: 30px;
+                position: absolute;
+                cursor: pointer;
+                svg {
+                    color: white !important;
+                }
+            }
+
+            .re-enter-new-password {
+                position: relative;
+                input {
+                    border-radius: 30px;
+                    height: 50px;
+                    width: 283px;
+                }
+            }
+            .icon-for-re-enter-new-password {
+                // background-color: black;
+                top: 9px;
+                right: 8px;
+                font-size: 27px;
+                width: 49px;
+                height: 33px;
+                border-radius: 30px;
+                position: absolute;
+                cursor: pointer;
+                svg {
+                    color: white !important;
+                }
+            }
+        }
+    }
+}

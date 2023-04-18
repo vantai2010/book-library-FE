@@ -1,0 +1,273 @@
+.book-store-details {
+    background-color: #f0f0f0;
+  
+    .book-details-container {
+      width: 100%;
+      // height: 400vh;
+      .book-details-content {
+        padding: 20px 0px 0px 0px;
+        width: 1140px;
+        margin: 0 auto;
+        .book-details-up {
+          height: 420px;
+          background-color: #ffffff;
+          .book-details-img {
+            text-align: center;
+            img {
+              width: 338px;
+              height: 338px;
+            }
+          }
+          
+        }
+        .book-details-down {
+          height: 420 px;
+          background-color: #ffffff;
+          padding: 30px;
+          .book-extra-information {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+
+            p:nth-child(1){
+              span{
+                text-decoration: underline;
+                cursor: pointer;
+                color: rgba(5, 222, 250, 1);
+                
+              }
+            }
+          }
+          .book-details-button {
+            display: flex;
+            align-items: center;
+            
+            button:first-child {
+              width: 220px;
+              height: 44px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-size: 1rem;
+              border-radius: 10px;
+              border: 1px solid #c92127;
+              background-color: #ffffff;
+              color: #c92127;
+              outline: none;
+              cursor: pointer;
+              .shopping-icons {
+                font-size: 2rem;
+                margin-right: 5px;
+                color: #c92127;
+                cursor: pointer;
+              }
+
+              &:hover{
+                background-color: #c92127;
+                color: #ffffff;
+                .shopping-icons {
+                  color: #ffffff;
+                }
+              }
+            }
+            button:last-child {
+              width: 220px;
+              height: 44px;
+              font-size: 1.1rem;
+              border-radius: 10px;
+              color: #ffffff;
+              background-color: #c92127;
+              outline: none;
+              border-style: none;
+              cursor: pointer;
+
+              &:hover{
+                background-color: #EA5455;
+              }
+            }
+          }
+        }
+      }
+      .book-information-content {
+        width: 1140px;
+        margin: 20px auto 0px;
+        height: auto;
+        background-color: #ffffff;
+        div:nth-child(1) {
+          padding: 20px 20px;
+          h2 {
+            font-size: 2rem;
+            font-weight: 600;
+          }
+          p {
+            font-size: 1.5rem;
+          }
+        }
+        div:nth-child(2) {
+          text-align: center;
+          button {
+            padding: 10px 60px;
+            font-size: 2rem;
+            border-style: none;
+            background: #ffffff;
+            color: #c92127;
+            border: 2px solid #c92127;
+            outline: none;
+            border-radius: 10px;
+          }
+        }
+      }
+      
+  }
+  
+  @media (max-width: 575.98px) {
+    .book-details-container {
+      .book-details-content {
+        width: 101% !important;
+        margin: 0 auto;
+        .book-details-up {
+          height: 420px !important;
+          background-color: #ffffff;
+          .book-details-img {
+            text-align: center;
+            img {
+              // width: 338px;
+              // height: 338px;
+            }
+            .book-details-button {
+            }
+          }
+        }
+        .book-details-down {
+          width: 100%;
+          height: 600px !important;
+        }
+      }
+      .book-information-content {
+        margin-top: 20px !important;
+        width: 100% !important;
+        div:first-child {
+          h2 {
+            padding: 0px 0px 0px 13px !important;
+          }
+        }
+        div:last-child {
+          button {
+          }
+        }
+      }
+      .book-comment-content {
+        width: 100% !important;
+        .user-comment {
+          width: 100% !important;
+        }
+        .user-comment-complete {
+          width: 100% !important;
+          .comment-quantily {
+          }
+          .list-comment {
+            width: 100% !important;
+            div {
+              width: 100% !important;
+              .me {
+                span {
+                  img {
+                    margin-right: 100px !important;
+                  }
+                }
+              }
+              p {
+                width: 100% !important;
+                height: 130px !important;
+              }
+            }
+          }
+        }
+        .book-comment-content {
+          width: 100% !important;
+        }
+      }
+    }
+  }
+  
+  // Small devices (landscape phones, less than 768px)
+  @media (max-width: 767.98px) {
+    .book-details-container {
+      .book-details-content {
+        width: 101% !important;
+        margin: 0 auto;
+        .book-details-up {
+          height: 420px !important;
+          background-color: #ffffff;
+          .book-details-img {
+            text-align: center;
+            img {
+              // width: 338px;
+              // height: 338px;
+            }
+            .book-details-button {
+            }
+          }
+        }
+        .book-details-down {
+          width: 100%;
+          height: 600px !important;
+        }
+      }
+      .book-information-content {
+        margin-top: 20px !important;
+        width: 100% !important;
+        div:first-child {
+          h2 {
+            padding: 0px 0px 0px 13px !important;
+          }
+        }
+        div:last-child {
+          button {
+          }
+        }
+      }
+      .book-comment-content {
+        width: 100% !important;
+        .user-comment {
+          width: 100% !important;
+        }
+        .user-comment-complete {
+          width: 100% !important;
+          .comment-quantily {
+          }
+          .list-comment {
+            width: 100% !important;
+            div {
+              width: 100% !important;
+              .me {
+                span {
+                  img {
+                    margin-right: 100px !important;
+                  }
+                }
+              }
+              p {
+                width: 100% !important;
+                height: 130px !important;
+              }
+            }
+          }
+        }
+        .book-comment-content {
+          width: 100% !important;
+        }
+      }
+    }
+  }
+  
+  // Medium devices (tablets, less than 992px)
+  @media (max-width: 991.98px) {
+  }
+  
+  // Large devices (desktops, less than 1200px)
+  @media (max-width: 1199.98px) {
+  }
+}
+  

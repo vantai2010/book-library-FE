@@ -1,0 +1,75 @@
+
+.header-system-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #0071ba;
+    color: white;
+    height: 40px;
+    position: relative;
+
+    .header-tabs-container {
+        display: flex;
+        gap: 2rem;
+        .btn-home-icon {
+            font-size: 2rem;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .nav-system{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        .nav-system-link{
+            cursor: pointer;
+        }
+            
+            
+        
+        }
+        
+    }
+
+    
+
+    .languages-system{
+
+        .language-vi{
+            cursor: pointer;
+            font-size: 16px;
+            &.active{
+                opacity: 1;
+                color: orange;
+            }
+        }
+        
+        .language-en{
+            cursor: pointer;
+            margin-right: 15px;
+            margin-left: 10px;
+            font-size: 16px;
+            
+            &.active{
+                opacity: 1;
+                color: #30d663;
+            }
+        }
+        .btn-logout {
+            color: white;
+            line-height: 40px;
+            height: 40px;
+            padding: 0 10px;
+            &:hover {
+                background-color: darken(#0071ba, 5);
+            }
+            
+            .btn-logout-content {
+                font-size: 27px;
+                font-weight: 600;
+            }
+        }
+    }
+}

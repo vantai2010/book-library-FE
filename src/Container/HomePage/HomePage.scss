@@ -1,0 +1,297 @@
+
+ 
+  // .homepage-container{
+    
+  //   .slider {
+  //     position: relative;
+    
+  //     img {
+  //       margin-top: 20px;
+  //       width: 100%;
+  //       height: 400px;
+  //       background-size: cover;
+  //       border-radius: 10px;
+  //     }
+  //   }
+    
+  //   .marquee-container {
+  //     margin-top: 4rem;
+  //     width: 100%;
+    
+  //     .marquee-content {
+  //       width: 1170px;
+  //       height: 60px;
+  //       background-color: #ffffff;
+  //       border: 4px solid rgba(5, 222, 250, 1);
+    
+  //       border-radius: 5px;
+  //       display: flex;
+  //       justify-content: center;
+  //       align-items: center;
+  //       marquee {
+  //         font-size: 1.5rem;
+  //         font-weight: 400;
+  //       }
+  //     }
+  //   }
+  //   .product-container {
+  //     margin-top: 20px;
+  //     width: 100%;
+    
+  //     .product-content {
+  //       text-align: center;
+  //       .product-content-up {
+  //         // padding: 1rem 0px 0px;
+  //         &::after {
+  //           content: "";
+  //           display: inline-block;
+  //           width: 100px;
+  //           height: 2px;
+  //           background-color: aqua;
+  //           border-radius: 99.9rem;
+  //         }
+  //       }
+  //       .product-content-down {
+  //         .book-content {
+  //           justify-content: space-between;
+  //           &.list-short {
+  //             justify-content: center;
+  //             gap: 10px;
+  //           }
+  //           .see-more-book-link {
+  //             color: blue;
+  //             cursor: pointer;
+  //             text-align: center;
+  //             font-size: 1.3rem;
+  //             &:hover{
+  //               text-decoration: underline;
+  //             }
+              
+  //           }
+  //           .book-image {
+  //             width: 250px;
+  //             height: 324px;
+  //             box-shadow: 0px 0px 3px #979292;
+  //             border-radius: 20px;
+  //             margin-bottom: 30px;
+  //             .book-name {
+  //               font-size: 1rem;
+  //               font-weight: 600;
+  //             }
+  //             cursor: pointer;
+  //             &:hover {
+  //               box-shadow: 0px 0px 10px #979292;
+  //             }
+  //             img {
+  //               width: 248px;
+  //               height: 200px;
+  //               border-radius: 20px 20px 0px 0px;
+  //             }
+  //             .book-start {
+  //               font-size: 1rem;
+  //               color: #ffbf00;
+  //             }
+  //           }
+
+            
+  //         }
+  //       }
+  //     }
+  //   }
+    
+  //   .btn-up-to-top {
+      
+  //   }
+    
+  // }
+
+  
+  
+  // @media (max-width: 576px) {
+  //   .book-content {
+  //     .book-image {
+  //       width: 173px !important;
+  //       img {
+  //         width: 173px !important;
+  //       }
+  //     }
+  //   }
+  //   .footer-container {
+  //     height: 800px !important;
+  //     iframe {
+  //       width: 220px;
+  //     }
+  //   }
+  // }
+  
+  // // Medium devices (tablets, 768px and up)
+  // @media (min-width: 768px) {
+  //   .book-image {
+  //     width: 220px !important;
+  //     img {
+  //       width: 220px !important;
+  //     }
+  //   }
+  //   .footer-container {
+  //     height: 830px !important;
+  //   }
+  // }
+  
+  // // Large devices (desktops, 992px and up)
+  // @media (min-width: 992px) {
+  //   .footer-container {
+  //     height: 500px !important;
+  //   }
+  // }
+  
+  // // Extra large devices (large desktops, 1200px and up)
+  // @media (min-width: 1200px) {
+  // }
+  
+
+
+
+.homepage-container {
+  .slider {
+    position: relative;
+
+    img {
+      margin-top: 20px;
+      width: 100%;
+      height: 400px;
+      background-size: cover;
+      border-radius: 10px;
+    }
+  }
+
+  .marquee-container {
+    margin-top: 4rem;
+    width: 100%;
+
+    .marquee-content {
+      width: 1170px;
+      height: 60px;
+      background-color: #ffffff;
+      border: 4px solid rgba(5, 222, 250, 1);
+
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      marquee {
+        font-size: 1.5rem;
+        font-weight: 400;
+      }
+    }
+  }
+  .product-container {
+    margin-top: 20px;
+    width: 100%;
+
+    .product-content {
+      text-align: center;
+      .product-content-up {
+        // padding: 1rem 0px 0px;
+        &::after {
+          content: "";
+          display: inline-block;
+          width: 100px;
+          height: 2px;
+          background-color: aqua;
+          border-radius: 99.9rem;
+        }
+      }
+      .product-content-down {
+        .see-more-book-link {
+          span {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0fe1f6;
+            cursor: pointer ;
+            text-align: center  ;
+            &:hover {
+              text-decoration: underline ;
+            }
+          }
+        }
+        .book-content {
+          justify-content: space-between;
+          &.list-short {
+            justify-content: center;
+            gap: 10px;
+          }
+          
+          .book-image {
+            width: 250px;
+            height: 324px;
+            box-shadow: 0px 0px 3px #979292;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            .book-name {
+              font-size: 1rem;
+              font-weight: 600;
+            }
+            cursor: pointer;
+            &:hover {
+              box-shadow: 0px 0px 10px #979292;
+            }
+            img {
+              width: 248px;
+              height: 200px;
+              border-radius: 20px 20px 0px 0px;
+            }
+            .book-start {
+              font-size: 1rem;
+              color: #ffbf00;
+            }
+          }
+        }
+        
+      }
+    }
+  }
+
+  .btn-up-to-top {
+  }
+}
+
+@media (max-width: 576px) {
+  .book-content {
+    .book-image {
+      width: 173px !important;
+      img {
+        width: 173px !important;
+      }
+    }
+  }
+  .footer-container {
+    height: 800px !important;
+    iframe {
+      width: 220px;
+    }
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .book-image {
+    width: 220px !important;
+    img {
+      width: 220px !important;
+    }
+  }
+  .footer-container {
+    height: 830px !important;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .footer-container {
+    height: 500px !important;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+}

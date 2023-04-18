@@ -1,0 +1,105 @@
+.footer-container {
+    height: 500px;
+    margin-top: 3rem;
+    border: 1px solid #979292;
+    background-image: linear-gradient(
+      68.4deg,
+      rgba(99, 251, 215, 1) -0.4%,
+      rgba(5, 222, 250, 1) 100.2%
+    );
+    .footer-content {
+      margin-top: 30px;
+      justify-content: space-between;
+      div {
+        display: flex-column;
+        h3 {
+          position: relative;
+          font-size: 1.3rem;
+          font-weight: 600;
+          color: #ffffff;
+          &::after {
+            content: "";
+            position: absolute;
+            top: 30px;
+            left: 0;
+            display: inline-block;
+            width: 230px;
+            height: 1px;
+            background-color: #ffffff;
+            border-radius: 99.9rem;
+          }
+        }
+        a {
+          text-decoration: none;
+          font-size: 0.8rem;
+          color: #ffffff;
+          line-height: 2.5rem;
+        }
+        iframe {
+          border-radius: 10px;
+        }
+      }
+      .div {
+        display: flex;
+        justify-content: center;
+        p {
+          text-align: center;
+        }
+      }
+      p {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #ffffff;
+        &::before {
+          content: "";
+          display: inline-block;
+          width: 1140px;
+          height: 1px;
+          background-color: #ffffff;
+        }
+      }
+    }
+  }
+
+
+  @media (max-width: 576px) {
+    .book-content {
+      .book-image {
+        width: 173px !important;
+        img {
+          width: 173px !important;
+        }
+      }
+    }
+    .footer-container {
+      height: 800px !important;
+      iframe {
+        width: 220px;
+      }
+    }
+  }
+  
+  // Medium devices (tablets, 768px and up)
+  @media (min-width: 768px) {
+    .book-image {
+      width: 220px !important;
+      img {
+        width: 220px !important;
+      }
+    }
+    .footer-container {
+      height: 830px !important;
+    }
+  }
+  
+  // Large devices (desktops, 992px and up)
+  @media (min-width: 992px) {
+    .footer-container {
+      height: 500px !important;
+    }
+  }
+  
+  // Extra large devices (large desktops, 1200px and up)
+  @media (min-width: 1200px) {
+  }
+  

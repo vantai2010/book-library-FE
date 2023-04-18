@@ -1,0 +1,53 @@
+.content-center {
+    position: relative;
+    
+
+    .options-search-container {
+        &.show{
+            display: block;
+        }
+        display: none;
+        position: absolute;
+        z-index: 100;
+        top: 48px;
+        left: 0px;
+        width: 100%;
+        background-color: white !important;
+        height: auto;
+        max-height: 400px;
+        border-radius: 3px;
+        box-shadow: 0px 0px 10px #eee;
+
+        overflow-y: scroll;
+        overflow-x: scroll;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(5, 222, 250, 1) #fff;
+
+        &::-webkit-scrollbar {
+            width: 10px;
+            &:hover {
+                width: 14px;
+            }
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: rgba(5, 222, 250, 1);
+        }
+        
+        .options-search-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            
+            p{
+                font-size: 15px;
+                padding-left: 15px;
+                cursor: pointer;
+                margin-bottom: none !important;
+                &:hover {
+                    background-color: #eee;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+.paginattion-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .pagination-body {
+        max-width: 100px;
+        // border: 1px solied red !important;
+        button {
+            font-size: 100px;
+            border: none !important;
+            border-radius: 50% !important;
+            outline: none !important;
+            cursor: pointer;
+        }
+    }
+    
+}
