@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { handleLoginFromTokenSuccess, handleLoginFromTokenFailed, connectSocketNotify } from '../../store/slice/authSlice'
 import { connectToNotifySocket } from '../../service/notifySocketService'
 import { changeListUserOnline } from '../../store/slice/appSlice'
+require('dotenv').config()
 
 export default function Authenticate({ children }) {
     const dispatch = useDispatch()

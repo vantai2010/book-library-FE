@@ -7,6 +7,7 @@ import { NAME_LOCAL_STORED } from '../utils/constant'
 import { gender, linkAvatarDefault } from '../utils/constant'
 import FormatedText from '../components/FormatedText/FormatedText'
 import { useNavigate } from 'react-router'
+require('dotenv').config()
 
 export default function Avatar({ isShowObtion, dataUser }) {
     const dispatch = useDispatch()

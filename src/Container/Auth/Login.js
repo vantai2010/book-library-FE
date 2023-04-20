@@ -15,6 +15,7 @@ import FormatedText from "../../components/FormatedText/FormatedText";
 import moment from 'moment'
 import { IoIosEye } from 'react-icons/io'
 import { IoIosEyeOff } from 'react-icons/io'
+require('dotenv').config()
 
 function Login() {
     const dispatch = useDispatch()
