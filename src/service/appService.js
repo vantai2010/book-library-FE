@@ -1,6 +1,9 @@
 import axios from 'axios'
 import { NAME_LOCAL_STORED } from '../utils/constant'
 import setAuthToken from '../utils/setAuthToken'
+import dotenv from 'dotenv'
+dotenv.config()
+
 const URL_BACK_END = process.env.REACT_APP_URL_BACK_END ? process.env.REACT_APP_URL_BACK_END : 'http://localhost:5000'
 
 let getAllCodeByTypeService = (type) => {

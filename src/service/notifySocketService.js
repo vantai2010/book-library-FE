@@ -1,6 +1,7 @@
 import { io } from 'socket.io-client'
 import { NAME_LOCAL_STORED, URL_BACK_END } from '../utils/constant'
-
+import dotenv from 'dotenv'
+dotenv.config()
 
 const connectToNotifySocket = () => {
     let url = process.env.REACT_APP_URL_BACK_END ? process.env.REACT_APP_URL_BACK_END + '/notify' : `${URL_BACK_END}/notify`

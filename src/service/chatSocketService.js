@@ -1,6 +1,7 @@
 import { io } from 'socket.io-client'
 import { URL_BACK_END } from '../utils/constant'
-
+import dotenv from 'dotenv'
+dotenv.config()
 
 const connectToChatSocket = () => {
     let url = process.env.REACT_APP_URL_BACK_END ? process.env.REACT_APP_URL_BACK_END + '/chat' : `${URL_BACK_END}/chat`
