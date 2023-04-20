@@ -58,8 +58,8 @@ function App() {
             <Route path="manage-shelf" element={<ManageShelf />} />
             <Route path="manage-history" element={<ManageHistory />} />
           </Route>
-          <Route path="/register/extra-infor/:email/:language" element={<EnterInforUser />} />
-          <Route path="/auth/forgot-password/:email/:phoneNumber/:language" element={<HandleForgotPassword />} />
+          <Route path="/register/extra-infor/:email/:language" exact element={<EnterInforUser />} />
+          <Route path="/auth/forgot-password/:email/:phoneNumber/:language" exact element={<HandleForgotPassword />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Authenticate>
