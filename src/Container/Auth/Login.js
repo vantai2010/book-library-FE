@@ -15,7 +15,7 @@ import FormatedText from "../../components/FormatedText/FormatedText";
 import moment from 'moment'
 import { IoIosEye } from 'react-icons/io'
 import { IoIosEyeOff } from 'react-icons/io'
-require('dotenv').config()
+import env from "react-dotenv";
 
 function Login() {
     const dispatch = useDispatch()
@@ -81,7 +81,7 @@ function Login() {
             password: inputForm.password
         }))
         let data = unwrapResult(response)
-        let nameLocalStore = process.env.LOCAL_STORE_TOKEN_NAME ? process.env.LOCAL_STORE_TOKEN_NAME : NAME_LOCAL_STORED
+        let nameLocalStore = env.LOCAL_STORE_TOKEN_NAME ? env.LOCAL_STORE_TOKEN_NAME : NAME_LOCAL_STORED
         if (data && data.errCode === 0) {
             toast.success(language === languages.EN ? data.messageEN : data.messageVI)
             localStorage.setItem(nameLocalStore, data.token)

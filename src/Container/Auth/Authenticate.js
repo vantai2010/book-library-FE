@@ -6,13 +6,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { handleLoginFromTokenSuccess, handleLoginFromTokenFailed, connectSocketNotify } from '../../store/slice/authSlice'
 import { connectToNotifySocket } from '../../service/notifySocketService'
 import { changeListUserOnline } from '../../store/slice/appSlice'
-require('dotenv').config()
+import env from "react-dotenv";
+
 
 export default function Authenticate({ children }) {
     const dispatch = useDispatch()
     const socketNotify = useSelector(state => state.auth.socketNotify)
     const loadUser = async () => {
-        let nameLocalStore = process.env.REACT_APP_LOCAL_STORE_TOKEN_NAME ? process.env.REACT_APP_LOCAL_STORE_TOKEN_NAME : NAME_LOCAL_STORED
+        let nameLocalStore = env.REACT_APP_LOCAL_STORE_TOKEN_NAME ? env.REACT_APP_LOCAL_STORE_TOKEN_NAME : NAME_LOCAL_STORED
         if (localStorage.getItem(nameLocalStore)) {
             setAuthToken(localStorage[nameLocalStore])
             dispatch(connectSocketNotify(connectToNotifySocket()))
