@@ -55,7 +55,7 @@ export default function OutStandingBook() {
                                                 <div className="book-image">
                                                     <img src={item.image} />
                                                     <p className='book-name'>{item.name}</p>
-                                                    <p><FormatedText id="bookInfor.author" />: {item.auhtorData?.name}</p>
+                                                    <p><FormatedText id="bookInfor.author" />: {item.authorData?.name}</p>
                                                     <p><FormatedText id="bookInfor.borrowed" />{item.borrowed} <FormatedText id="bookInfor.times" /></p>
                                                 </div>
                                             </div>
@@ -73,7 +73,7 @@ export default function OutStandingBook() {
                                                 <div className="book-image">
                                                     <img src={item.image} />
                                                     <p className='book-name'>{item.name}</p>
-                                                    <p><FormatedText id="bookInfor.author" />: {item.auhtorData?.name}</p>
+                                                    <p><FormatedText id="bookInfor.author" />: {item.authorData?.name}</p>
                                                     <p><FormatedText id="bookInfor.borrowed" />{item.borrowed} <FormatedText id="bookInfor.times" /></p>
                                                 </div>
                                             </div>
