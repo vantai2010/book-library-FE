@@ -12,12 +12,16 @@ import FormatedText from '../../components/FormatedText/FormatedText';
 import { IoIosEye } from 'react-icons/io'
 import { IoIosEyeOff } from 'react-icons/io'
 import { changeLanguage } from '../../store/slice/appSlice';
+import { useLocation } from 'react-router-dom';
 
 export default function HandleForgotPassword() {
     const dispatch = useDispatch()
     const language = useSelector(state => state.app.language)
     const isLoading = useSelector(state => state.auth.isLoading)
     const navigate = useNavigate()
+    const location = useLocation()
+    const question = new URLSearchParams(location.search)
+
     const params = useParams()
     const handleOnchaneState = () => {
         document.getElementsByClassName("hand-dog-left")[0].style.top = "80px";
@@ -40,7 +44,7 @@ export default function HandleForgotPassword() {
     };
 
     useEffect(() => {
-        dispatch(changeLanguage(params.language))
+        dispatch(changeLanguage(question.get('language')))
     }, [])
 
     const [inputForm, setInputForm] = useState({
@@ -60,8 +64,8 @@ export default function HandleForgotPassword() {
 
     const handleConfirm = async () => {
         let response = await dispatch(handleForotPasswordThunk({
-            email: params.email,
-            phoneNumber: params.phoneNumber,
+            email: question.get('email'),
+            phoneNumber: question.get('phoneNumber'),
             newPassword: inputForm.newPassword,
             reNewPassword: inputForm.reNewPassword
         }))
