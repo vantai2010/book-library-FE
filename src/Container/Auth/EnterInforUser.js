@@ -9,7 +9,7 @@ import _ from 'lodash';
 import CommonUtils from '../../utils/CommonUtils';
 import { registerExtraInforService } from '../../service/appService';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { useParams } from 'react-router';
 import { handleAddExtraInforAfterRegisterThunk } from '../../store/slice/authSlice';
 import { unwrapResult } from '@reduxjs/toolkit';
@@ -18,6 +18,8 @@ import FormatedText from '../../components/FormatedText/FormatedText';
 
 function EnterInforUser() {
     const params = useParams()
+    const location = useLocation()
+    const question = new URLSearchParams(location.search)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const listGenders = useSelector(state => state.app.listGenders)
@@ -70,7 +72,7 @@ function EnterInforUser() {
             await dispatch(fetchListGenderThunk())
         }
         getDispatch()
-        dispatch(changeLanguage(params.language))
+        dispatch(changeLanguage(question.get('language')))
     }, [])
 
     console.log(obtionSelect)
@@ -215,7 +217,7 @@ function EnterInforUser() {
         }
 
         let response = await dispatch(handleAddExtraInforAfterRegisterThunk({
-            email: params.email,
+            email: question.get('email'),
             firstName: inputInforUser.firstName,
             lastName: inputInforUser.lastName,
             address: inputInforUser.address,
