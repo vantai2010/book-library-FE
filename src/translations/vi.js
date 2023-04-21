@@ -31,7 +31,7 @@ export const textVI = {
         skillBook: 'Sách Kỹ Năng',
         bookOfAuthor: "Sách Của Tác Giả: ",
         name: "Tên: ",
-        gender: "Giớitính: ",
+        gender: "Giới tính: ",
         birthDay: "Ngày sinh: ",
         noOption: "Không có kết quả",
 
