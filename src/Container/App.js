@@ -50,7 +50,7 @@ function App() {
           <Route path='/extra-infor-user' element={<ExtraInforUser />} />
           <Route path='/history-transaction' element={<HistoryTransaction />} />
           <Route path='/infor-author/:id' element={<InforAuthor />} />
-          <Route path="/register/extra-infor/:email/:language"  element={<EnterInforUser />} />
+          <Route path="/register/extra-infor"  element={<EnterInforUser />} />
           <Route path="/auth/forgot-password"  element={<HandleForgotPassword />} />
           <Route exact path='/system' element={<System />} >
             <Route path="manage-borrow" element={<ManageBorrow />} />
