@@ -53,12 +53,12 @@ function App() {
           <Route path="/register/extra-infor/:email/:language" exact element={<EnterInforUser />} />
           <Route path="/auth/forgot-password/:email/:phoneNumber/:language" exact element={<HandleForgotPassword />} />
           <Route path='/system' element={<System />} >
-            <Route path="manage-borrow" element={<ManageBorrow />} />
-            <Route path="manage-user" element={<ManageUser />} />
-            <Route path="manage-book" element={<ManageBook />} />
-            <Route path="manage-author" element={<ManageAuthor />} />
-            <Route path="manage-shelf" element={<ManageShelf />} />
-            <Route path="manage-history" element={<ManageHistory />} />
+            <Route path="/manage-borrow" element={<ManageBorrow />} />
+            <Route path="/manage-user" element={<ManageUser />} />
+            <Route path="/manage-book" element={<ManageBook />} />
+            <Route path="/manage-author" element={<ManageAuthor />} />
+            <Route path="/manage-shelf" element={<ManageShelf />} />
+            <Route path="/manage-history" element={<ManageHistory />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
