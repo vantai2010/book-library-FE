@@ -14,9 +14,9 @@
     "bootstrap": "^4.0.0",
     "bootstrap-icons": "^1.10.3",
     "dotenv": "^16.0.3",
+    "gh-pages": "^5.0.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
-    "node-sass": "^7.0.3",
     "os-browserify": "^0.3.0",
     "path-browserify": "^1.0.1",
     "react": "^17.0.2",
@@ -36,6 +36,7 @@
     "react-toastify": "^9.1.2",
     "reactstrap": "^9.1.6",
     "recharts": "^2.5.0",
+    "sass": "^1.62.1",
     "slick-carousel": "^1.8.1",
     "socket.io": "^4.6.1",
     "socket.io-client": "^4.6.1",
@@ -46,7 +47,9 @@
     "build": "react-dotenv && react-scripts build",
     "serve": "react-dotenv && serve build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -74,5 +77,6 @@
       "REACT_APP_URL_BACK_END",
       "REACT_APP_LOCAL_STORE_TOKEN_NAME"
     ]
-  }
+  },
+  "homepage": "http://vantai2010.github.io/book-library-FE"
 }
