@@ -75,7 +75,6 @@ function EnterInforUser() {
         dispatch(changeLanguage(question.get('language')))
     }, [])
 
-    console.log(obtionSelect)
 
 
     const handleChangeSelect = (selectedOption) => {

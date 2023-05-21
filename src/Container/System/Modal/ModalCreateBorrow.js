@@ -10,6 +10,7 @@ import { textVI } from '../../../translations/vi';
 import { useSelector } from 'react-redux';
 import moment from 'moment';
 import { createNewTransactionService } from '../../../service/appService';
+import Loading from "../../../components/Loading"
 
 export default function ModalCreateBorrow({ isOpen, toggle, className, listBooks, resetListCart }) {
     const language = useSelector(state => state.app.language)
@@ -20,7 +21,7 @@ export default function ModalCreateBorrow({ isOpen, toggle, className, listBooks
         phoneNumber: "",
         returnDate: ""
     })
-
+    const [isLoading, setIsLoading] = useState(false)
     const handleOnchange = (key, event) => {
         setInputForm({
             ...inputForm,
@@ -219,6 +220,7 @@ export default function ModalCreateBorrow({ isOpen, toggle, className, listBooks
             })
             return
         }
+        setIsLoading(true)
         let timeNow = moment(Date.now()).format('HH:mm-DD-MM-YYYY')
         let res = await createNewTransactionService({
             bookId: selectedBook.value,
@@ -229,6 +231,7 @@ export default function ModalCreateBorrow({ isOpen, toggle, className, listBooks
             returnDate: returnDate.trim(),
             time: timeNow
         })
+        setIsLoading(false)
         if (res && res.data && res.data.errCode === 0) {
             toast.success(language === languages.EN ? res.data.messageEN : res.data.messageVI)
             handleClose()
@@ -239,6 +242,10 @@ export default function ModalCreateBorrow({ isOpen, toggle, className, listBooks
     }
 
     return (
+        <>
+        {
+            isLoading && <Loading />
+        }
         <Modal
             isOpen={isOpen}
             toggle={handleClose}
@@ -292,5 +299,6 @@ export default function ModalCreateBorrow({ isOpen, toggle, className, listBooks
                 <Button color="primary" className='btn-create' onClick={handleCreateNewTransaction} ><FormatedText id="modal.create" /></Button>
             </ModalFooter>
         </Modal>
+        </>
     )
 }

@@ -13,7 +13,7 @@ import { textEN } from '../../../translations/en';
 import { textVI } from '../../../translations/vi';
 import Select from 'react-select';
 import moment from 'moment';
-
+import Loading from "../../../components/Loading"
 
 export default function ModalCreateAuthor({ isOpen, toggle, className, setKeyRefToNewUser, listGenders }) {
     const language = useSelector(state => state.app.language)
@@ -22,6 +22,7 @@ export default function ModalCreateAuthor({ isOpen, toggle, className, setKeyRef
         birthDay: '',
         description: '',
     })
+    const [isLoading, setIsLoading] = useState(false)
     const [image, setImage] = useState(null)
     const [obtionGender, setObtionGender] = useState([])
     const [selectedGender, setSelectedGender] = useState({})
@@ -171,11 +172,13 @@ export default function ModalCreateAuthor({ isOpen, toggle, className, setKeyRef
             return
         }
         try {
+            setIsLoading(true)
             let response = await handleAddNewAuthorService({
                 ...inputForm,
                 genderId: selectedGender.value,
                 image
             })
+            setIsLoading(false) 
             if (response && response.data && response.data.errCode === 0) {
                 toast.success(language === languages.EN ? response.data.messageEN : response.data.messageVI)
                 setKeyRefToNewUser(inputForm.name + inputForm.birthDay)
@@ -195,6 +198,10 @@ export default function ModalCreateAuthor({ isOpen, toggle, className, setKeyRef
     }
 
     return (
+        <>
+        {
+            isLoading && <Loading />
+        }
         <Modal
             isOpen={isOpen}
             toggle={handleClose}
@@ -258,5 +265,6 @@ export default function ModalCreateAuthor({ isOpen, toggle, className, setKeyRef
                 <Button color="primary" className='btn-create' onClick={() => handleCreateNewAuthor()}><FormatedText id="modal.create" /></Button>
             </ModalFooter>
         </Modal>
+        </>
     )
 }

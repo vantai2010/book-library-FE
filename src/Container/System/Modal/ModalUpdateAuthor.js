@@ -14,6 +14,7 @@ import { textVI } from '../../../translations/vi';
 import Select from 'react-select';
 import _ from 'lodash'
 import moment from 'moment';
+import Loading from "../../../components/Loading"
 
 export default function ModalUpdateAuthor({ isOpen, toggle, className, setKeyRefToNewUser, author, listGenders }) {
     const language = useSelector(state => state.app.language)
@@ -45,6 +46,7 @@ export default function ModalUpdateAuthor({ isOpen, toggle, className, setKeyRef
         genderId: '',
         image: ''
     })
+    const [isLoading, setIsLoading] = useState(false)
     useEffect(() => {
         let gender = []
         if (listGenders && listGenders.length > 0) {
@@ -195,12 +197,14 @@ export default function ModalUpdateAuthor({ isOpen, toggle, className, setKeyRef
             return
         }
         try {
+            setIsLoading(true)
             let response = await handleUpdateAuthorService({
                 ...inputForm,
                 id: author.id,
                 genderId: selectedGender.value,
                 image
             })
+            setIsLoading(false)
             if (response && response.data && response.data.errCode === 0) {
                 toast.success(language === languages.EN ? response.data.messageEN : response.data.messageVI)
                 setKeyRefToNewUser(inputForm.name + inputForm.birthDay)
@@ -222,6 +226,10 @@ export default function ModalUpdateAuthor({ isOpen, toggle, className, setKeyRef
 
 
     return (
+        <>
+        {
+            isLoading && <Loading />
+        }
         <Modal
             isOpen={isOpen}
             toggle={handleClose}
@@ -285,5 +293,6 @@ export default function ModalUpdateAuthor({ isOpen, toggle, className, setKeyRef
                 <Button color="primary" className='btn-create' onClick={() => handleUpdateAuthor()}><FormatedText id="modal.update" /></Button>
             </ModalFooter>
         </Modal>
+        </>
     )
 }

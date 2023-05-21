@@ -85,3 +85,7 @@ export const period = [
     { keyMap: "P", valueEn: "Period", valueVi: "Trong Khoảng" },
 ]
 
+export const environment = [
+    REACT_APP_URL_BACK_END="https://book-library-be.onrender.com",
+    REACT_APP_LOCAL_STORE_TOKEN_NAME="jhdhajhdauyeiqeyqeiqu"
+]

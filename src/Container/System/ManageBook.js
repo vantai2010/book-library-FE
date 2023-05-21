@@ -17,6 +17,7 @@ import { toast } from 'react-toastify'
 import { Modal } from 'antd'
 import { textEN } from '../../translations/en'
 import { textVI } from '../../translations/vi'
+import Loading from "../../components/Loading"
 
 export default function ManageBook() {
     const dispatch = useDispatch()
@@ -24,7 +25,7 @@ export default function ManageBook() {
     const language = useSelector(state => state.app.language)
     const [currentCategory, setCurrentCategory] = useState(category_book.COMIC)
     const [listBooks, setListBooks] = useState({})
-
+    const [isLoading, setIsLoading] = useState(false)
     const [dataUpdate, setDataUpdate] = useState({})
     const [isShowModalCreateBook, setIsShowModalCreateBook] = useState(false)
     const [isShowModalUpdateBook, setIsShowModalUpdateBook] = useState(false)
@@ -44,8 +45,10 @@ export default function ManageBook() {
 
     const getInforShelfAndAuthor = async () => {
         try {
+            setIsLoading(true)
             let resAuhtor = await handleGetAllAuthorService()
             let resShelf = await handleGetAllShelfService()
+            setIsLoading(false)
             if (resShelf && resShelf.data && resShelf.data.errCode === 0) {
                 setListShelfs(resShelf.data.data)
             } else {
@@ -63,7 +66,9 @@ export default function ManageBook() {
     }
 
     const getAllListBook = async () => {
+        setIsLoading(true)
         let response = await getAllBookService()
+        setIsLoading(false)
         if (response && response.data && response.data.errCode === 0) {
             let object = {}
             object[category_book.COMIC] = response.data.data.filter(item => item.categoryId === 'C1')
@@ -149,7 +154,9 @@ export default function ManageBook() {
 
     const handleDeleteModalCheck = async () => {
         try {
+            setIsLoading(true)
             const response = await handleDeleteBookService(idDelete.current)
+            setIsLoading(false)
             if (response && response.data && response.data.errCode === 0) {
                 toast.success(language === languages.EN ? response.data.messageEN : response.data.messageVI)
                 getAllListBook()
@@ -194,6 +201,9 @@ export default function ManageBook() {
 
     return (
         <>
+            {
+                isLoading && <Loading />
+            }
             <div className="manage-container">
                 <ModalCreateBook
                     isOpen={isShowModalCreateBook}

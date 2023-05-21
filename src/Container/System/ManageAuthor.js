@@ -17,11 +17,13 @@ import { BiDetail } from "react-icons/bi";
 import { Modal } from 'antd'
 import { textEN } from '../../translations/en'
 import { textVI } from '../../translations/vi'
+import Loading from "../../components/Loading"
 
 export default function ManageAuthor() {
     const language = useSelector(state => state.app.language)
     const listGenders = useSelector(state => state.app.listGenders)
     const dispatch = useDispatch()
+    const [isLoading, setIsLoading] = useState(false)
     const [arrAuthors, setArrAuthors] = useState([])
     const [isShowModalCreateAuthor, setIsShowModalCreateAuthor] = useState(false)
     const [isShowModalUpdateAuthor, setIsShowModalUpdateAuthor] = useState(false)
@@ -32,7 +34,9 @@ export default function ManageAuthor() {
 
     const getAllAuthor = async () => {
         try {
+            setIsLoading(true)
             let response = await handleGetAllAuthorService()
+            setIsLoading(false)
             if (response && response.data && response.data.errCode === 0) {
                 setArrAuthors(response.data.data)
             } else {
@@ -120,7 +124,9 @@ export default function ManageAuthor() {
 
     const handleDeleteModalCheck = async () => {
         try {
+            setIsLoading(true)
             const response = await handleDeleteAuthorService(idDelete.current)
+            setIsLoading(false)
             if (response && response.data && response.data.errCode === 0) {
                 toast.success(language === languages.EN ? response.data.messageEN : response.data.messageVI)
                 getAllAuthor()
@@ -162,6 +168,9 @@ export default function ManageAuthor() {
 
     return (
         <>
+            {
+                isLoading && <Loading />
+            }
             <div className="manage-container">
                 <ModalCreateAuthor
                     isOpen={isShowModalCreateAuthor}

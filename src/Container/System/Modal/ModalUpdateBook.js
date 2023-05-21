@@ -11,6 +11,7 @@ import { handleUpdateBookService } from '../../../service/appService';
 import './Modal.scss';
 import Select from 'react-select';
 import _ from 'lodash'
+import Loading from "../../../components/Loading"
 
 export default function ModalUpdateBook({ isOpen, toggle, className, setKeyRefToNewBook, book, listCategories, listAuthors, listShelfs, setCurrentCategory }) {
     const language = useSelector(state => state.app.language)
@@ -36,7 +37,7 @@ export default function ModalUpdateBook({ isOpen, toggle, className, setKeyRefTo
     const [image, setImage] = useState(book.image)
     const [obtionAuthor, setObtionAuthor] = useState([])
     const [selectedAuthor, setSelectedAuthor] = useState(selectedObtionAuthor)
-
+    const [isLoading , setIsLoading] = useState(false)
     const [obtionCategory, setObtionCategory] = useState([])
     const [selectedCategory, setSelectedCategory] = useState(selectedObtionCategory)
 
@@ -319,6 +320,7 @@ export default function ModalUpdateBook({ isOpen, toggle, className, setKeyRefTo
             return
         }
         try {
+            setIsLoading(true)
             let response = await handleUpdateBookService({
                 ...inputForm,
                 id: book.id,
@@ -327,6 +329,7 @@ export default function ModalUpdateBook({ isOpen, toggle, className, setKeyRefTo
                 categoryId: selectedCategory.value,
                 image
             })
+            setIsLoading(false)
             if (response && response.data && response.data.errCode === 0) {
                 toast.success(language === languages.EN ? response.data.messageEN : response.data.messageVI)
                 setCurrentCategory(selectedCategory.value)
@@ -357,6 +360,10 @@ export default function ModalUpdateBook({ isOpen, toggle, className, setKeyRefTo
     }
 
     return (
+        <>
+        {
+            isLoading && <Loading />
+        }
         <Modal
             isOpen={isOpen}
             toggle={handleClose}
@@ -441,5 +448,6 @@ export default function ModalUpdateBook({ isOpen, toggle, className, setKeyRefTo
                 <Button color="primary" className='btn-create' onClick={() => handleUpdateAuthor()}><FormatedText id="modal.update" /></Button>
             </ModalFooter>
         </Modal>
+        </>
     )
 }

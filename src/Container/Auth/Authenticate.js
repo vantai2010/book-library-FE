@@ -7,13 +7,14 @@ import { handleLoginFromTokenSuccess, handleLoginFromTokenFailed, connectSocketN
 import { connectToNotifySocket } from '../../service/notifySocketService'
 import { changeListUserOnline } from '../../store/slice/appSlice'
 import env from "react-dotenv";
-
+import { environment } from '../../utils/constant'
 
 export default function Authenticate({ children }) {
     const dispatch = useDispatch()
     const socketNotify = useSelector(state => state.auth.socketNotify)
     const loadUser = async () => {
-        let nameLocalStore = env.REACT_APP_LOCAL_STORE_TOKEN_NAME ? env.REACT_APP_LOCAL_STORE_TOKEN_NAME : NAME_LOCAL_STORED
+        // let nameLocalStore = env.REACT_APP_LOCAL_STORE_TOKEN_NAME ? env.REACT_APP_LOCAL_STORE_TOKEN_NAME : NAME_LOCAL_STORED
+        let nameLocalStore = environment.REACT_APP_LOCAL_STORE_TOKEN_NAME ? environment.REACT_APP_LOCAL_STORE_TOKEN_NAME : NAME_LOCAL_STORED
         if (localStorage.getItem(nameLocalStore)) {
             setAuthToken(localStorage[nameLocalStore])
             dispatch(connectSocketNotify(connectToNotifySocket()))

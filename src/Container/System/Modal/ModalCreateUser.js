@@ -9,6 +9,7 @@ import CommonUtils from '../../../utils/CommonUtils'
 import { handleAddNewUserService } from '../../../service/appService';
 import Select from 'react-select';
 import './Modal.scss';
+import Loading from "../../../components/Loading"
 
 export default function ModalCreateUser({ isOpen, toggle, className, listGenders, listRoles, setCurrentRole, setKeyRefToNewUser }) {
     const language = useSelector(state => state.app.language)
@@ -22,7 +23,7 @@ export default function ModalCreateUser({ isOpen, toggle, className, listGenders
         phoneNumber: '',
     })
     const [image, setImage] = useState(null)
-
+    const [isLoading, setIsLoading] = useState(false)
     const [obtionGender, setObtionGender] = useState([])
     const [selectedGender, setSelectedGender] = useState({})
     const [obtionRole, setObtionRole] = useState([])
@@ -336,12 +337,14 @@ export default function ModalCreateUser({ isOpen, toggle, className, listGenders
         }
 
         try {
+            setIsLoading(true)
             let response = await handleAddNewUserService({
                 ...inputForm,
                 genderId: selectedGender.value,
                 roleId: selectedRole.value,
                 image
             })
+            setIsLoading(false)
             if (response && response.data && response.data.errCode === 0) {
                 toast.success(language === languages.EN ? response.data.messageEN : response.data.messageVI)
 
@@ -369,6 +372,10 @@ export default function ModalCreateUser({ isOpen, toggle, className, listGenders
     }
 
     return (
+        <>
+        {
+            isLoading && <Loading />
+        }
         <Modal
             isOpen={isOpen}
             toggle={handleClose}
@@ -448,5 +455,6 @@ export default function ModalCreateUser({ isOpen, toggle, className, listGenders
                 <Button color="primary" className='btn-create' onClick={() => handleCreateNewUser()}><FormatedText id="modal.create" /></Button>
             </ModalFooter>
         </Modal>
+        </>
     )
 }

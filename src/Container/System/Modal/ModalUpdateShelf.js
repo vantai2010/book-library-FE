@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import FormatedText from '../../../components/FormatedText/FormatedText';
 import { handleUpdateShelfService } from '../../../service/appService';
 import './Modal.scss';
+import Loading from "../../../components/Loading"
 
 export default function ModalUpdateShelf({ isOpen, toggle, className, setKeyRefToNewShelf, shelf }) {
     const language = useSelector(state => state.app.language)
@@ -19,6 +20,8 @@ export default function ModalUpdateShelf({ isOpen, toggle, className, setKeyRefT
         location: '',
         description: ''
     })
+
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
         setInputForm({
@@ -86,10 +89,12 @@ export default function ModalUpdateShelf({ isOpen, toggle, className, setKeyRefT
             return
         }
         try {
+            setIsLoading(true)
             let response = await handleUpdateShelfService({
                 ...inputForm,
                 id: shelf.id
             })
+            setIsLoading(false)
             if (response && response.data && response.data.errCode === 0) {
                 toast.success(language === languages.EN ? response.data.messageEN : response.data.messageVI)
                 setKeyRefToNewShelf(inputForm.name)
@@ -107,6 +112,10 @@ export default function ModalUpdateShelf({ isOpen, toggle, className, setKeyRefT
 
 
     return (
+        <>
+        {
+            isLoading && <Loading />
+        }
         <Modal
             isOpen={isOpen}
             toggle={handleClose}
@@ -144,5 +153,6 @@ export default function ModalUpdateShelf({ isOpen, toggle, className, setKeyRefT
                 <Button color="primary" className='btn-create' onClick={() => handleUpdateShelf()}><FormatedText id="modal.update" /></Button>
             </ModalFooter>
         </Modal>
+        </>
     )
 }

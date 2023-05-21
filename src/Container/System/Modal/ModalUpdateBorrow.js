@@ -11,6 +11,7 @@ import { textVI } from '../../../translations/vi';
 import moment from 'moment';
 import { useSelector } from 'react-redux';
 import { updateOneTransactionService } from '../../../service/appService';
+import Loading from "../../../components/Loading"
 
 export default function ModalCreateBorrow({ isOpen, toggle, className, listBooks, resetListCart, dataUpdate }) {
     let bookSelected = {
@@ -25,6 +26,8 @@ export default function ModalCreateBorrow({ isOpen, toggle, className, listBooks
         phoneNumber: dataUpdate?.userCartData?.phoneNumber,
         returnDate: dataUpdate?.returnDate
     })
+
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleOnchange = (key, event) => {
         setInputForm({
@@ -236,6 +239,7 @@ export default function ModalCreateBorrow({ isOpen, toggle, className, listBooks
             })
             return
         }
+        setIsLoading(true)
         let res = await updateOneTransactionService({
             userId: dataUpdate?.userId,
             firstName: firstName,
@@ -245,6 +249,7 @@ export default function ModalCreateBorrow({ isOpen, toggle, className, listBooks
             returnDate: returnDate.trim(),
             cartId: dataUpdate?.id
         })
+        setIsLoading(false)
         if (res && res.data && res.data.errCode === 0) {
             toast.success(language === languages.EN ? res.data.messageEN : res.data.messageVI)
             handleClose()
@@ -255,6 +260,10 @@ export default function ModalCreateBorrow({ isOpen, toggle, className, listBooks
     }
 
     return (
+        <>
+        {
+            isLoading && <Loading />
+        }
         <Modal
             isOpen={isOpen}
             toggle={handleClose}
@@ -309,5 +318,6 @@ export default function ModalCreateBorrow({ isOpen, toggle, className, listBooks
                 <Button color="primary" className='btn-create' onClick={handleUpdateTransaction}><FormatedText id="modal.update" /></Button>
             </ModalFooter>
         </Modal>
+        </>
     )
 }

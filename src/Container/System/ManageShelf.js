@@ -14,6 +14,7 @@ import { Modal } from 'antd'
 import { textEN } from '../../translations/en'
 import { textVI } from '../../translations/vi'
 import Select from 'react-select';
+import Loading from "../../components/Loading"
 
 export default function ManageShelf() {
     const language = useSelector(state => state.app.language)
@@ -23,7 +24,7 @@ export default function ManageShelf() {
     const [isOpenModalCheck, setIsOpenModalCheck] = useState(false)
     const idDelete = useRef(null)
     const [dataUpdate, setDataUpdate] = useState({})
-
+    const [isLoading, setIsLoading] = useState(false)
     const shelfsRef = useRef({})
     const searchRef = useRef(null)
     const [optionSearch, setOptionSearch] = useState([])
@@ -31,7 +32,9 @@ export default function ManageShelf() {
 
     const getAllListShelfs = async () => {
         try {
+            setIsLoading(true)
             let response = await handleGetAllShelfService()
+            setIsLoading(false)
             if (response && response.data && response.data.errCode === 0) {
                 setListShelfs(response.data.data)
             } else {
@@ -147,6 +150,9 @@ export default function ManageShelf() {
 
     return (
         <>
+            {
+                isLoading && <Loading />
+            }
             <div className="manage-container">
                 <ModalCreateShelf
                     isOpen={isShowModalCreateShelf}

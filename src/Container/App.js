@@ -23,6 +23,7 @@ import HistoryTransaction from './Auth/ExtraInfor/HistoryTransaction';
 import NotFound from './NotFound';
 import InforAuthor from './Author/InforAuthor';
 
+
 function App() {
 
   return (
@@ -50,9 +51,7 @@ function App() {
           <Route path='/extra-infor-user' element={<ExtraInforUser />} />
           <Route path='/history-transaction' element={<HistoryTransaction />} />
           <Route path='/infor-author/:id' element={<InforAuthor />} />
-          <Route path="/register/extra-infor"  element={<EnterInforUser />} />
-          <Route path="/auth/forgot-password"  element={<HandleForgotPassword />} />
-          <Route exact path='/system' element={<System />} >
+          <Route path='/system' element={<System />} >
             <Route path="manage-borrow" element={<ManageBorrow />} />
             <Route path="manage-user" element={<ManageUser />} />
             <Route path="manage-book" element={<ManageBook />} />
@@ -60,6 +59,8 @@ function App() {
             <Route path="manage-shelf" element={<ManageShelf />} />
             <Route path="manage-history" element={<ManageHistory />} />
           </Route>
+          <Route path="/register/extra-infor/:email/:language" exact element={<EnterInforUser />} />
+          <Route path="/auth/forgot-password" exact element={<HandleForgotPassword />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Authenticate>

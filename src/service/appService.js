@@ -2,8 +2,11 @@ import axios from 'axios'
 import { NAME_LOCAL_STORED } from '../utils/constant'
 import setAuthToken from '../utils/setAuthToken'
 import env from "react-dotenv";
+import { environment } from '../utils/constant';
 
-const URL_BACK_END = env.REACT_APP_URL_BACK_END ? env.REACT_APP_URL_BACK_END : 'http://localhost:5000'
+// const URL_BACK_END = env.REACT_APP_URL_BACK_END ? env.REACT_APP_URL_BACK_END : 'http://localhost:5000'
+
+const URL_BACK_END = environment.REACT_APP_URL_BACK_END ? environment.REACT_APP_URL_BACK_END : 'http://localhost:5000'
 
 let getAllCodeByTypeService = (type) => {
     return axios.get(`${URL_BACK_END}/api/get-allcode-by-type?type=${type}`)

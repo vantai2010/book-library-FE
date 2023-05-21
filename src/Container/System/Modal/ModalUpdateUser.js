@@ -9,6 +9,7 @@ import { handleUpdateUserService } from '../../../service/appService';
 import Select from 'react-select';
 import './Modal.scss';
 import _ from 'lodash'
+import Loading from "../../../components/Loading"
 
 
 
@@ -42,6 +43,8 @@ export default function ModalUpdateUser({ isOpen, toggle, className, user, setKe
         address: user.address,
         phoneNumber: user.phoneNumber
     })
+
+    const [isLoading, setIsLoading] = useState(false)
     const [image, setImage] = useState(user.image)
     const [showPassword, setShowPassword] = useState(false)
     const [obtionGender, setObtionGender] = useState([])
@@ -165,6 +168,7 @@ export default function ModalUpdateUser({ isOpen, toggle, className, user, setKe
 
 
     const handleUpdateUser = async () => {
+        
         let { firstName, lastName, phoneNumber, address } = inputForm
         if (!firstName) {
             setErrMessage({
@@ -299,6 +303,7 @@ export default function ModalUpdateUser({ isOpen, toggle, className, user, setKe
             return
         }
         try {
+            setIsLoading(true)
             let response = await handleUpdateUserService({
                 id: user.id,
                 ...inputForm,
@@ -306,6 +311,7 @@ export default function ModalUpdateUser({ isOpen, toggle, className, user, setKe
                 roleId: selectedRole.value,
                 image: image
             })
+            setIsLoading(false)
             if (response && response.data && response.data.errCode === 0) {
                 toast.success(language === languages.EN ? response.data.messageEN : response.data.messageVI)
                 setCurrentRole(selectedRole.value)
@@ -327,6 +333,10 @@ export default function ModalUpdateUser({ isOpen, toggle, className, user, setKe
     }
 
     return (
+        <>
+        {
+            isLoading && <Loading />
+        }
         <Modal
             isOpen={isOpen}
             toggle={handleClose}
@@ -396,5 +406,6 @@ export default function ModalUpdateUser({ isOpen, toggle, className, user, setKe
                 <Button color="primary" className='btn-create' onClick={() => handleUpdateUser()}><FormatedText id="modal.update" /></Button>
             </ModalFooter>
         </Modal>
+        </>
     )
 }

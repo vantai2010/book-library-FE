@@ -9,6 +9,7 @@ import CommonUtils from '../../../utils/CommonUtils'
 import { handleAddNewBookService } from '../../../service/appService';
 import './Modal.scss';
 import Select from 'react-select';
+import Loading from "../../../components/Loading"
 
 export default function ModalCreateBook({ isOpen, toggle, className, setKeyRefToNewBook, listCategories, listAuthors, listShelfs, setCurrentCategory }) {
     const language = useSelector(state => state.app.language)
@@ -19,6 +20,7 @@ export default function ModalCreateBook({ isOpen, toggle, className, setKeyRefTo
         description: '',
         roomId: ''
     })
+    const [isLoading, setIsLoading ] = useState(false)
     const [image, setImage] = useState(null)
     const [obtionAuthor, setObtionAuthor] = useState([])
     const [selectedAuthor, setSelectedAuthor] = useState({})
@@ -293,6 +295,7 @@ export default function ModalCreateBook({ isOpen, toggle, className, setKeyRefTo
             return
         }
         try {
+            setIsLoading(true)
             let response = await handleAddNewBookService({
                 ...inputForm,
                 authorId: selectedAuthor.value,
@@ -300,7 +303,7 @@ export default function ModalCreateBook({ isOpen, toggle, className, setKeyRefTo
                 shelfId: selectedShelf.value,
                 image: image
             })
-
+            setIsLoading(false)
             if (response && response.data && response.data.errCode === 0) {
                 toast.success(language === languages.EN ? response.data.messageEN : response.data.messageVI)
                 setCurrentCategory(selectedCategory.value)
@@ -332,6 +335,10 @@ export default function ModalCreateBook({ isOpen, toggle, className, setKeyRefTo
     };
 
     return (
+        <>
+        {
+            isLoading && <Loading />
+        }
         <Modal
             isOpen={isOpen}
             toggle={handleClose}
@@ -416,5 +423,6 @@ export default function ModalCreateBook({ isOpen, toggle, className, setKeyRefTo
                 <Button color="primary" className='btn-create' onClick={() => handleCreateNewAuthor()}><FormatedText id="modal.create" /></Button>
             </ModalFooter>
         </Modal>
+        </>
     )
 }

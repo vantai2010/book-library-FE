@@ -6,15 +6,15 @@ import { languages, period, keyMap_period } from '../../utils/constant'
 import _ from 'lodash'
 import Select from 'react-select';
 import moment from 'moment'
-
+import Loading from "../../components/Loading"
 import './Manage.scss'
-
 import { getAllHistoryService, getAllHistoryByTimeService } from '../../service/appService'
+
 
 export default function ManageHistory() {
     const language = useSelector(state => state.app.language)
     const [listHistories, setListHistories] = useState([])
-
+    const [isLoading, setIsLoading] = useState(false)
     const historiesRef = useRef({})
     const searchRef = useRef(null)
     const [optionSearch, setOptionSearch] = useState([])
@@ -24,6 +24,7 @@ export default function ManageHistory() {
         startDate: '',
         endDate: ''
     })
+    
     const [showFormFilter, setShowFormFilter] = useState(false)
 
 
@@ -31,12 +32,14 @@ export default function ManageHistory() {
         let now = new Date();
         if (currentPeriod === keyMap_period.IN_THE_DATE) {
             setShowFormFilter(false)
+            setIsLoading(true)
             let startDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
             let endDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999);
             let res = await getAllHistoryByTimeService({
                 startDate: moment(startDate).format('YYYY-MM-DD HH:mm:ss'),
                 endDate: moment(endDate).format('YYYY-MM-DD HH:mm:ss')
             })
+            setIsLoading(false)
             if (res && res.data && res.data.errCode === 0) {
                 setListHistories(res.data.data)
             } else {
@@ -46,12 +49,15 @@ export default function ManageHistory() {
 
         if (currentPeriod === keyMap_period.ON_WEEK) {
             setShowFormFilter(false)
+            setIsLoading(true)
             let startDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() - now.getDay() + 1)
             let endDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() - now.getDay() + 7, 23, 59, 59, 999);
+
             let res = await getAllHistoryByTimeService({
                 startDate: moment(startDate).format('YYYY-MM-DD HH:mm:ss'),
                 endDate: moment(endDate).format('YYYY-MM-DD HH:mm:ss')
             })
+            setIsLoading(false)
             if (res && res.data && res.data.errCode === 0) {
                 setListHistories(res.data.data)
             } else {
@@ -60,12 +66,14 @@ export default function ManageHistory() {
         }
         if (currentPeriod === keyMap_period.IN_MONTHS) {
             setShowFormFilter(false)
+            setIsLoading(true)
             let startDate = new Date(now.getFullYear(), now.getMonth(), 1);
             let endDate = new Date(now.getFullYear(), now.getMonth() + 1, 0);
             let res = await getAllHistoryByTimeService({
                 startDate: moment(startDate).format('YYYY-MM-DD HH:mm:ss'),
                 endDate: moment(endDate).format('YYYY-MM-DD HH:mm:ss')
             })
+            setIsLoading(false)
             if (res && res.data && res.data.errCode === 0) {
                 setListHistories(res.data.data)
             } else {
@@ -136,12 +144,14 @@ export default function ManageHistory() {
             return toast(language === languages.EN ? 'Missing information' : 'Thiếu thông tin')
         }
         if (moment(startDate.trim(), 'DD-MM-YYYY', true).isValid() && moment(endDate.trim(), 'DD-MM-YYYY', true).isValid()) {
+            setIsLoading(true)
             let startDateMoment = moment(startDate, 'DD-MM-YYYY').format('YYYY-MM-DD HH:mm:ss')
             let endDateMoment = moment(endDate, "DD-MM-YYYY").format('YYYY-MM-DD HH:mm:ss');
             let res = await getAllHistoryByTimeService({
                 startDate: startDateMoment,
                 endDate: endDateMoment
             })
+            setIsLoading(false)
             if (res && res.data && res.data.errCode === 0) {
                 setListHistories(res.data.data)
                 return
@@ -150,12 +160,14 @@ export default function ManageHistory() {
             }
         }
         if (moment(startDate.trim(), 'HH:mm:ss DD-MM-YYYY', true).isValid() && moment(endDate.trim(), 'HH:mm:ss DD-MM-YYYY', true).isValid()) {
+            setIsLoading(true)
             let startDateMoment = moment(startDate, 'HH:mm:ss DD-MM-YYYY').format('YYYY-MM-DD HH:mm:ss')
             let endDateMoment = moment(endDate, "HH:mm:ss DD-MM-YYYY").format('YYYY-MM-DD HH:mm:ss');
             let res = await getAllHistoryByTimeService({
                 startDate: startDateMoment,
                 endDate: endDateMoment
             })
+            setIsLoading(false)
             if (res && res.data && res.data.errCode === 0) {
                 setListHistories(res.data.data)
                 return
@@ -164,12 +176,14 @@ export default function ManageHistory() {
             }
         }
         if (moment(startDate.trim(), 'HH:mm DD-MM-YYYY', true).isValid() && moment(endDate.trim(), 'HH:mm DD-MM-YYYY', true).isValid()) {
+            setIsLoading(true)
             let startDateMoment = moment(startDate, 'HH:mm DD-MM-YYYY').format('YYYY-MM-DD HH:mm:ss')
             let endDateMoment = moment(endDate, "HH:mm DD-MM-YYYY").format('YYYY-MM-DD HH:mm:ss');
             let res = await getAllHistoryByTimeService({
                 startDate: startDateMoment,
                 endDate: endDateMoment
             })
+            setIsLoading(false)
             if (res && res.data && res.data.errCode === 0) {
                 setListHistories(res.data.data)
                 return
@@ -182,6 +196,9 @@ export default function ManageHistory() {
 
     return (
         <>
+        {
+                isLoading && <Loading />
+        }
             <div className="manage-container">
                 <div className="title text-center"><FormatedText id="manage.titleHistory" /></div>
                 <div className="mt-4 mx-3">
@@ -263,7 +280,6 @@ export default function ManageHistory() {
                     </table>
                 </div>
             </div>
-
         </>
     )
 }

@@ -8,15 +8,14 @@ import FormatedText from '../../../components/FormatedText/FormatedText';
 import CommonUtils from '../../../utils/CommonUtils'
 import { handleAddNewShelfService } from '../../../service/appService';
 import './Modal.scss';
-import { textEN } from '../../../translations/en';
-import { textVI } from '../../../translations/vi';
+import Loading from "../../../components/Loading"
 
 export default function ModalCreateShelf({ isOpen, toggle, className, setKeyRefToNewShelf }) {
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     const language = useSelector(state => state.app.language)
-    const [listAuthors, setListAuthors] = useState({})
-    const [listShelfs, setListShelfs] = useState({})
-
+    // const [listAuthors, setListAuthors] = useState({})
+    // const [listShelfs, setListShelfs] = useState({})
+    const [isLoading, setIsLoading] = useState(false)
     const [inputForm, setInputForm] = useState({
         name: '',
         location: '',
@@ -86,9 +85,11 @@ export default function ModalCreateShelf({ isOpen, toggle, className, setKeyRefT
             return
         }
         try {
+            setIsLoading(true)
             let response = await handleAddNewShelfService({
                 ...inputForm
             })
+            setIsLoading(false)
             if (response && response.data && response.data.errCode === 0) {
                 toast.success(language === languages.EN ? response.data.messageEN : response.data.messageVI)
                 setKeyRefToNewShelf(inputForm.name)
@@ -103,21 +104,14 @@ export default function ModalCreateShelf({ isOpen, toggle, className, setKeyRefT
 
     }
 
-    const checkValideData = () => {
-        let valid = true
-        let arrInput = ['name', 'location', 'description']
-        for (let i = 0; i < arrInput.length; i++) {
-            if (!inputForm[arrInput[i]]) {
-                valid = false
-                toast.error(language === languages.EN ? 'missing information ' + arrInput[i] + ' !!!' : 'Vui lòng nhập ' + arrInput[i] + ' !!!')
-                break;
-            }
-        }
-        return valid
-    }
+    
 
 
     return (
+        <>
+        {
+            isLoading && <Loading />
+        }
         <Modal
             isOpen={isOpen}
             toggle={handleClose}
@@ -155,5 +149,6 @@ export default function ModalCreateShelf({ isOpen, toggle, className, setKeyRefT
                 <Button color="primary" className='btn-create' onClick={() => handleCreateNewShelf()}><FormatedText id="modal.create" /></Button>
             </ModalFooter>
         </Modal>
+        </>
     )
 }

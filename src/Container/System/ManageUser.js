@@ -16,6 +16,7 @@ import { Modal } from 'antd';
 import { textEN } from '../../translations/en'
 import { textVI } from '../../translations/vi'
 import Select from 'react-select';
+import Loading from "../../components/Loading"
 
 
 export default function ManageUser() {
@@ -28,7 +29,7 @@ export default function ManageUser() {
     const [isOpenModalCheck, setIsOpenModalCheck] = useState(false)
     const idDelete = useRef(null)
     const [showDetail, setShowDetail] = useState({})
-
+    const [isLoading, setIsLoading] = useState(false)
     const usersRef = useRef({})
     const searchRef = useRef(null)
     const [optionSearch, setOptionSearch] = useState({})
@@ -61,8 +62,11 @@ export default function ManageUser() {
     }, [language, currentRole, arrUsers])
 
     const getAllUsersToState = async () => {
+        
         try {
+            setIsLoading(true)
             let response = await handleGetAllUserService()
+            setIsLoading(false)
             if (response && response.data && response.data.errCode === 0) {
                 let coppyArrUser = { ...arrUsers }
                 coppyArrUser[user_role.ADMIN] = response.data.data.filter(user => user.roleId === user_role.ADMIN)
@@ -175,6 +179,9 @@ export default function ManageUser() {
 
     return (
         <>
+        {
+            isLoading && <Loading />
+        }
             <div className="manage-container manage-user" >
                 <ModalCreateUser
                     isOpen={isOpenModalCreateUser}
@@ -323,7 +330,6 @@ export default function ManageUser() {
                     </table>
                 </div >
             </div >
-
         </>
     )
 }

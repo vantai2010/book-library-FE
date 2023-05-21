@@ -17,7 +17,7 @@ import { Button } from 'antd'
 import ModalCreateBorrow from './Modal/ModalCreateBorrow';
 import ModalUpdateBorrow from './Modal/ModalUpdateBorrow';
 import moment from 'moment';
-
+import Loading from "../../components/Loading"
 
 export default function ManageBorrow() {
     const language = useSelector(state => state.app.language)
@@ -35,7 +35,7 @@ export default function ManageBorrow() {
     const transactionConfirm = useRef()
     const [isOpenModalCreateBorrow, setIsOpenModalCreateBorrow] = useState(false)
     const [isOpenModalUpdateBorrow, setIsOpenModalUpdateBorrow] = useState(false)
-
+    const [isLoading, setIsLoading] = useState(false)
     const dataUpdate = useRef()
 
     const transactionsRef = useRef({})
@@ -46,7 +46,9 @@ export default function ManageBorrow() {
     const listBooks = useRef()
 
     const getAllBook = async () => {
+        setIsLoading(true)
         let res = await getAllBookService()
+        setIsLoading(false)
         if (res && res.data && res.data.errCode === 0) {
             let options = []
             if (res.data.data && res.data.data.length > 0) {
@@ -63,7 +65,9 @@ export default function ManageBorrow() {
         }
     }
     const getListCartToManage = async () => {
+        setIsLoading(true)
         let res = await getListCartToManageService()
+        setIsLoading(false)
         if (res && res.data && res.data.errCode === 0) {
             let obtions = {}
             if (res.data.data.length > 0) {
@@ -169,8 +173,11 @@ export default function ManageBorrow() {
             setIsOpenModalInfor(false)
             toast.success(language === languages.EN ? res.data.messageEN : res.data.messageVI)
             socketNotify?.emit('send-notify-to-user', { receiverId: dataCartRefuseSelected.current.userId })
+            setIsLoading(true)
             // socketNotify?.emit('handled-request', { senderId: dataCartRefuseSelected.current.userId, bookName: dataCartRefuseSelected.bookCartData?.name })
+
             let resDelete = await deleteOneCartService(idCartSelected.current)
+            setIsLoading(false)
             if (resDelete && resDelete.data && resDelete.data.errCode === 0) {
                 toast.success(language === languages.EN ? resDelete.data.messageEN : resDelete.data.messageVI)
                 getListCartToManage()
@@ -207,6 +214,7 @@ export default function ManageBorrow() {
             setErrMessage(language === languages.EN ? 'This field should look like 03-12-2022' : "Trường này phải có dạng như 03-12-2022")
             return
         }
+        setIsLoading(true)
         let res = await confirmTransactionSuccessService({
             cartId: transactionConfirm.current.id,
             bookId: transactionConfirm.current.bookId,
@@ -214,6 +222,7 @@ export default function ManageBorrow() {
             borrowDate: transactionConfirm.current.time,
             returnDate: reaturnDateConfirm
         })
+        setIsLoading(false)
         if (res && res.data && res.data.errCode === 0) {
             toast.success(language === languages.EN ? res.data.messageEN : res.data.messageVI)
             setIsOpenModalConfirm(false)
@@ -227,12 +236,14 @@ export default function ManageBorrow() {
 
     const handleConfirmToUserNeedBorrow = async (data) => {
         let timeNow = moment(Date.now()).format('HH:mm-DD-MM-YYYY')
+        setIsLoading(true)
         let res = await confirmCartBorrowSuccessService({
             userId: data.userId,
             cartId: data.id,
             time: timeNow,
             bookId: data.bookId,
         })
+        setIsLoading(false)
         if (res && res.data && res.data.errCode === 0) {
             getListCartToManage()
             socketNotify?.emit('argee-borrow-book', { receiverId: data.userId, bookName: data.bookCartData?.name })
@@ -245,6 +256,9 @@ export default function ManageBorrow() {
 
     return (
         <>
+            {
+                isLoading && <Loading />
+            }
             <div className="manage-container">
                 <ModalCreateBorrow
                     isOpen={isOpenModalCreateBorrow}
