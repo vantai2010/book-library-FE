@@ -14,7 +14,7 @@
     "bootstrap": "^4.0.0",
     "bootstrap-icons": "^1.10.3",
     "dotenv": "^16.0.3",
-    "gh-pages": "^5.0.0",
+    "firebase": "^9.22.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "os-browserify": "^0.3.0",
@@ -47,9 +47,7 @@
     "build": "react-scripts build",
     "serve": "serve build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
