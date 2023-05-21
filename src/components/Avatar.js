@@ -8,6 +8,7 @@ import { gender, linkAvatarDefault } from '../utils/constant'
 import FormatedText from '../components/FormatedText/FormatedText'
 import { useNavigate } from 'react-router'
 import env from "react-dotenv";
+import { environment } from '../utils/constant'
 
 export default function Avatar({ isShowObtion, dataUser }) {
     const dispatch = useDispatch()
@@ -43,7 +44,10 @@ export default function Avatar({ isShowObtion, dataUser }) {
     }, [userInfor, dataUser])
 
     const handleLogout = () => {
-        localStorage.removeItem(env.LOCAL_STORE_TOKEN_NAME ? env.LOCAL_STORE_TOKEN_NAME : NAME_LOCAL_STORED)
+
+        // localStorage.removeItem(env.LOCAL_STORE_TOKEN_NAME ? env.LOCAL_STORE_TOKEN_NAME : NAME_LOCAL_STORED)
+
+        localStorage.removeItem(environment.LOCAL_STORE_TOKEN_NAME ? environment.LOCAL_STORE_TOKEN_NAME : NAME_LOCAL_STORED)
         dispatch(handleLogoutAccount())
     }
 

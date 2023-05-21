@@ -16,6 +16,7 @@ import moment from 'moment'
 import { IoIosEye } from 'react-icons/io'
 import { IoIosEyeOff } from 'react-icons/io'
 import env from "react-dotenv";
+import { environment } from "../../utils/constant";
 
 function Login() {
     const dispatch = useDispatch()
@@ -81,7 +82,8 @@ function Login() {
             password: inputForm.password
         }))
         let data = unwrapResult(response)
-        let nameLocalStore = env.LOCAL_STORE_TOKEN_NAME ? env.LOCAL_STORE_TOKEN_NAME : NAME_LOCAL_STORED
+        // let nameLocalStore = env.LOCAL_STORE_TOKEN_NAME ? env.LOCAL_STORE_TOKEN_NAME : NAME_LOCAL_STORED
+        let nameLocalStore = environment.LOCAL_STORE_TOKEN_NAME ? environment.LOCAL_STORE_TOKEN_NAME : NAME_LOCAL_STORED
         if (data && data.errCode === 0) {
             toast.success(language === languages.EN ? data.messageEN : data.messageVI)
             localStorage.setItem(nameLocalStore, data.token)

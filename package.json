@@ -43,9 +43,9 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-dotenv && react-scripts start",
-    "build": "react-dotenv && react-scripts build",
-    "serve": "react-dotenv && serve build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "serve": "serve build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
@@ -71,12 +71,6 @@
   },
   "devDependencies": {
     "dotenv-webpack": "^8.0.1"
-  },
-  "react-dotenv": {
-    "whitelist": [
-      "REACT_APP_URL_BACK_END",
-      "REACT_APP_LOCAL_STORE_TOKEN_NAME"
-    ]
   },
   "homepage": "http://vantai2010.github.io/book-library-FE"
 }
